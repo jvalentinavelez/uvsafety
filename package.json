@@ -15,18 +15,31 @@
   "dependencies": {
     "@angular/common": "~8.2.14",
     "@angular/core": "~8.2.14",
+    "@angular/fire": "^5.4.2",
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ionic-native/background-geolocation": "^5.25.0",
     "@ionic-native/core": "^5.0.7",
+    "@ionic-native/geolocation": "^5.25.0",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
+    "@mauron85/cordova-plugin-background-geolocation": "^3.1.0",
+    "angular-resize-event": "^1.2.1",
+    "cordova-android": "8.1.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-geolocation": "^4.0.2",
     "core-js": "^2.5.4",
-    "rxjs": "~6.5.1",
+    "devextreme": "19.2.7",
+    "devextreme-angular": "^19.2.7",
+    "ng-circle-progress": "^1.5.1",
+    "org.apache.cordova.geolocation": "^0.3.6",
+    "rxjs": "^6.5.5",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "firebase": ">= 5.5.7 <8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.20",
@@ -39,6 +52,12 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^4.2.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -49,7 +68,35 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "cordova-wheel-selector-plugin": "^1.1.2",
+    "cordova-plugin-insomnia": "^4.3.0",
+    "cordova-plugin-navigationbar": "^1.0.31",
+    "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
+    "firebase-tools": "^7.12.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-wheel-selector-plugin": {},
+      "cordova-plugin-insomnia": {},
+      "cordova-plugin-navigationbar": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
 }

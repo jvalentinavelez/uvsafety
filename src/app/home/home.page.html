@@ -1,20 +1,65 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" *ngIf="weather">
+    <circle-progress
+      [percent]="percent"
+      [maxPercent]="100"
+      [radius]="radius"
+      [showTitle]="false"
+      [showSubtitle]="false"
+      [animation]="true"
+      [showUnits]="false"
+      [outerStrokeWidth]="16"
+      [outerStrokeColor]=[outerStrokeColor]
+      [backgroundStroke]="'#418aaf'"
+      [backgroundStrokeWidth]="10"
+      [outerStrokeGradient]="true"
+      [outerStrokeGradientStopColor]=[outerStrokeGradientStopColor]
+      [showInnerStroke]="false"
+  ></circle-progress>  
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openginfo()" color="dark">
+      <ion-icon name="information-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="openreminders()" color="dark">
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="start" slot="fixed" >
+    <ion-fab-button (click)="openprofile()" color="light">
+      <ion-icon name="person-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div id="moreinfo">
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="openuvinfo()" color="dark" size="small">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  <div id="container">
+    <ion-grid *ngIf="weather">
+      <ion-row>
+        <ion-col>
+          <div class="uv"> {{weather['uv'].toFixed(0)}}</div>
+          <br><br>
+          <div class="descriptionuv"> {{risk}}</div> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+    <ion-grid *ngIf="weather">
+      <ion-row>
+        <ion-col>
+          <div class="temp">{{weather['city_name']}}, {{weather['temp'].toFixed(0)}}&deg;</div>
+          <!--ion-icon name="{{riskicon}}" size="large"></ion-icon-->
+          <div class="icon"><img src="../assets/img/{{icon['icon']}}.png"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 </ion-content>

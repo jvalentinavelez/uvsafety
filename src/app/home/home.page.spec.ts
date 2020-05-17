@@ -12,11 +12,13 @@ describe('HomePage', () => {
       declarations: [ HomePage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

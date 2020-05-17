@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tu perfil</ion-title>
+    <ion-button slot="end" (click)="returnhome()" fill="white" color="white"> 
+      <ion-icon slot="icon-only" name="home-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor ="let user of datauser" color="light">
+    <ion-label>
+      <h2> <b>{{user.name}}</b> </h2>
+    </ion-label>
+  </ion-item>
+  <ion-button expand="block" class="buttoncolor" fill="outline" (click)="Onlogout()" fill="white" color="dark">Cerrar sesión</ion-button>
+</ion-content>
