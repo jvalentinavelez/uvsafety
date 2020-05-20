@@ -7,8 +7,8 @@
 <ion-content padding>
   <!--img class="icon" src="assets/icon/register.svg" alt=""-->
 <ion-item color="light">
-  <ion-label position="floating" > Nombre</ion-label>
-  <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Ingresa tu nombre"></ion-input>
+  <ion-label position="floating" > Nombre Completo</ion-label>
+  <ion-input type="text" [(ngModel)]="name" name="name" placeholder="Ingresa tu nombre completo"></ion-input>
 </ion-item>
 <ion-item color="light">
   <ion-label position="floating" > Correo electrónico</ion-label>
@@ -17,6 +17,24 @@
 <ion-item color="light">
   <ion-label position="floating" > Contraseña</ion-label>
   <ion-input  type="password" [(ngModel)]="password" name="password" placeholder="Contraseña"></ion-input>
+</ion-item>
+<ion-item color="dark">
+  <ion-label position="floating" class="ion-text-wrap"> Tipo de piel</ion-label>
+  <ion-select placeholder="Selecciona tu tipo de piel" color="dark" [(ngModel)]="skin">
+    <ion-select-option value="uno">Blanca, con muchas pecas</ion-select-option>
+    <ion-select-option value="dos">Blanca</ion-select-option>
+    <ion-select-option value="tres">Blanca, mínima tonalidad marrón</ion-select-option>
+    <ion-select-option value="cuatro">Marrón, tonalidad intermedia</ion-select-option>
+    <ion-select-option value="cinco">Marrón intenso</ion-select-option>
+    <ion-select-option value="seis">Negra, tonalidad intensa</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item color="dark">
+  <ion-label position="floating" class="ion-text-wrap"> Género</ion-label>
+  <ion-select placeholder="Selecciona tu género" color="dark" [(ngModel)]="gender">
+    <ion-select-option value="m">Mujer</ion-select-option>
+    <ion-select-option value="h">Hombre</ion-select-option>
+     </ion-select>
 </ion-item>
 <br>
 <ion-button color="light" expand="block" (click)="OnSubmitRegister()">Registrarse</ion-button>

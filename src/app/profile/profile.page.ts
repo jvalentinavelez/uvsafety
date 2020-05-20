@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router} from '@angular/router';
-import { AuthenticationService } from "../services/authentication.service";
-import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firestore";
-import { map } from "rxjs/operators";
+import {AngularFireAuth} from '@angular/fire/auth';
 
-interface user{
-  name: string
-  uid: string
-}
+import { AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
+import * as firebase from 'firebase/app';
+import { UserinfoService } from '../services/userinfo.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,26 +13,37 @@ interface user{
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+   
+  mainuser: AngularFirestoreDocument
+  sub
+  name: string
+  skin:string
+  gender:string
+  email:string
 
-  public datauser: any = [];
-
-  constructor(private router: Router,  public authservice : AuthenticationService, private db : AngularFirestore
-    ) {}
+  constructor(
+    private afAuth : AngularFireAuth, 
+    private router: Router,  
+    public user: UserinfoService,
+    public afs: AngularFirestore,
+    ) {
+      this.mainuser = afs.doc(`users/${user.getUID()}`)
+      this.sub = this.mainuser.valueChanges().subscribe(event => {
+        this.name = event.name
+        this.email = event.email
+        this.skin = event.skin
+        this.gender = event.gender
+      })
+    }
   returnhome(){
     this.router.navigate(['home']);
   }
   Onlogout(){
-    this.authservice.logout();
+    this.user.logout();
   }
 
   ngOnInit(){
-    this.authservice.getusers().subscribe( users => {
-      users.map(user => {
-        const data: user=user.payload.doc.data() as user;
-        data.uid = user.payload.doc.id;
-        this.datauser.push(data);
-        console.log(user)
-      })  
-    })
-  }
+
+    }
+
 }

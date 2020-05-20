@@ -265,5 +265,18 @@
     color: #000;
   
   }
+  ion-alert:not(.select-alert) {
+    --background: #e7eaf0;
+    --ion-text-color: rgb(15, 15, 15);
+
+    button {
+        color: white;
+        font-size: 20px;
+    }
+
+    .alert-message {
+        color: #ddd;
+    }
+}
 
 }

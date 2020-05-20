@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { Router } from "@angular/router";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFirestore} from "@angular/fire/firestore";
 import { map } from "rxjs/operators";
 
-export interface user{
+interface UserI{
   name: string
+  displayname: string
   uid: string
 }
 
@@ -13,8 +14,10 @@ export interface user{
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  constructor(private AFauth : AngularFireAuth, private router : Router, private db : AngularFirestore) { }
+  constructor(
+    private AFauth : AngularFireAuth, 
+    private router : Router, 
+    private db : AngularFirestore) { }
   
   login(email:string, password:string){
 
@@ -29,13 +32,15 @@ export class AuthenticationService {
       this.router.navigate(['/login']);
     })
   }
-  register(email : string, password : string, name:string){
+  register(email : string, password : string, name:string, piel:string){
     return new Promise ((resolve, reject) => {
       this.AFauth.auth.createUserWithEmailAndPassword(email, password).then( res =>{
           //console.log(res.user.uid);
         const uid = res.user.uid;
           this.db.collection('users').doc(uid).set({
             name : name,
+            piel: piel,
+            email: email,
             uid : uid
           })
 
@@ -45,5 +50,8 @@ export class AuthenticationService {
   }
   getusers(){
     return this.db.collection('users').snapshotChanges()
+  }
+  getUserAuth(){
+    return this.AFauth.authState
   }
 }

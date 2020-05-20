@@ -58,7 +58,7 @@ export class HomePage {
       watch.subscribe((data)=>{
         this.latitude= data.coords.latitude;
         this.longitude=data.coords.longitude;
-        //console.log(this.latitude);
+        console.log(this.latitude);
         this.weatherService.getWeather(this.latitude,this.longitude, this.apiKey)
           .subscribe((weather:any) => {
           this.weather=weather['data']['0'];
